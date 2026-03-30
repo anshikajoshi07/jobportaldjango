@@ -1,0 +1,409 @@
+{% load static %}
+
+{% block body%}
+
+{% include 'navigation.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Hero section with static logo -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text-logo">JobPortal</div>
+    <h1>Welcome to Smart Job Portal</h1>
+    <p>Best place to connect talent with opportunity - fast, modern, and friendly.</p>
+    <a href="#features" class="btn btn-primary hero-btn">Explore Opportunities</a>
+  </div>
+</section>
+
+
+<!-- image work start -->
+<section class="features-gallery">
+  <h2>Success Stories</h2>
+  <p>Explore how students and recruiters are connecting through our platform.</p>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <div class="card-content">
+        <h4>Resume Builder in Minutes</h4>
+        <p>Create a winning resume with step-by-step guidance designed for all experience levels.</p>
+      </div>
+      <div class="gallery-overlay">Career Empowerment</div>
+    </div>
+    <div class="gallery-card">
+      <div class="card-content">
+        <h4>Live Interview Preparation</h4>
+        <p>Practice with mock interview questions curated from top recruiter feedback.</p>
+      </div>
+      <div class="gallery-overlay">Interview Confidence</div>
+    </div>
+    <div class="gallery-card">
+      <div class="card-content">
+        <h4>Smart Job Matching</h4>
+        <p>Get role recommendations based on your profile, skills, and career goals.</p>
+      </div>
+      <div class="gallery-overlay">Perfect Matches</div>
+    </div>
+    <div class="gallery-card">
+      <div class="card-content">
+        <h4>Instant Recruiter Alerts</h4>
+        <p>Receive real-time updates when recruiters show interest in your profile.</p>
+      </div>
+      <div class="gallery-overlay">Fast Connections</div>
+    </div>
+  </div>
+</section>
+
+<section class="mid-content">
+  <div class="mid-inner">
+    <h2>Why choose JobPortal?</h2>
+    <p>JobPortal is built for fast matching, transparent communication, and fair opportunity. We use AI-smart recommendations, role-specific advice, and real recruiter reach to keep your career moving.</p>
+    <ul>
+      <li>Verified jobs and trusted companies</li>
+      <li>Custom alerts for skills & preferences</li>
+      <li>Resume evaluation + interview tips</li>
+      <li>24/7 candidate support</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+.mid-content {
+  background: #f0fdf4;
+  padding: 26px 18px;
+  text-align: center;
+}
+.mid-content h2 {
+  color: #0f766e;
+  margin-bottom: 10px;
+}
+.mid-content p {
+  color: #334155;
+  margin: 0 auto 14px;
+  max-width: 760px;
+}
+.mid-content ul {
+  list-style: inside disc;
+  color: #1f2937;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0;
+}
+.mid-content li {
+  margin: 6px 0;
+  font-weight: 600;
+}
+.hero-section {
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3fa9f5 0%, #2a2d5e 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  z-index: 1;
+  border-radius: 12px;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+.hero-text-logo {
+  font-weight: 800;
+  font-size: 3.2rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0,0,0,0.4);
+  margin-bottom: 14px;
+}
+.hero-btn {
+  margin-top: 18px;
+}
+.hero-video {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 20px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 20px 0;
+}
+.gallery-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: transform .3s ease, border-color .3s ease;
+}
+.gallery-card:hover {
+  transform: translateY(-6px);
+  border-color: #23a86c;
+}
+.card-content {
+  padding: 20px;
+  color: #1f2937;
+}
+.card-content h4 {
+  margin-bottom: 9px;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: #0f172a;
+}
+.card-content p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #475569;
+}
+.gallery-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(34, 197, 94, 0.92);
+  color: #fff;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+}
+</style>
+
+
+<!-- new -->
+<style>
+.features-section {
+  padding: 45px 20px;
+  background: linear-gradient(to bottom, #f9fbfc, #f3f1f1);
+}
+
+.features-section h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  color: #0369a1;
+}
+
+.features-section p {
+  text-align: center;
+  margin-bottom: 22px;
+  color: #334155;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  width: min(1040px, 100%);
+  margin: 0 auto;
+}
+
+.feature-box {
+  background: rgba(174, 240, 173, 0.95);
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #c7efca;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.4s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.feature-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+}
+
+.feature-box.show,
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-box i {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.feature-box h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 6px;
+}
+
+.feature-box p {
+  color: #334155;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    padding: 32px 12px;
+  }
+
+  .feature-box {
+    padding: 15px;
+  }
+}
+</style>
+
+<!-- ---------------- -->
+  <section class="features-section">
+      <!-- <h2>We believe in delivering innovative, efficient, and growth-oriented financial solutions while maintaining trust with our clients.</h2> -->
+      <div class="features-container">
+          <div class="feature-box animate">
+              <i class="icon">💡</i>
+              <h3>Innovation</h3>
+              <p>Bringing creative financial solutions to modern businesses.</p>
+          </div>
+          <div class="feature-box animate">
+              <i class="icon">⚙️</i>
+              <h3>Efficiency</h3>
+              <p>Streamlining accounting processes for maximum productivity.</p>
+          </div>
+          <div class="feature-box animate">
+              <i class="icon">📈</i>
+              <h3>Growth</h3>
+              <p>Helping businesses scale with data-driven financial strategies.</p>
+          </div>
+          <div class="feature-box animate">
+              <i class="icon">🤝</i>
+              <h3>Trust</h3>
+              <p>Building long-term partnerships based on transparency and accuracy.</p>
+          </div>
+        </div>
+  </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const boxes = document.querySelectorAll(".feature-box");
+
+  function animateOnScroll() {
+      boxes.forEach((box) => {
+          const boxTop = box.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (boxTop < windowHeight - 50) {
+              box.classList.add("show");
+          }
+      });
+  }
+
+  window.addEventListener("scroll", animateOnScroll);
+  animateOnScroll(); // Run once on load
+});
+</script>
+
+
+<!-- end -->
+
+<br/>
+<br/>
+<br/>
+
+<!-- footer start -->
+<div class="footer-container">
+  <div class="footer-section">
+    <h3>About Us</h3>
+    <p>Your trusted job portal for finding the right opportunity at the right time.</p>
+  </div>
+  <div class="footer-section">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="footer-section">
+    <h3>Contact</h3>
+    <p>Email: jport09@example.com</p>
+    <p>Phone: (123) 456-7890</p>
+  </div>
+  <div class="footer-section social" style="color: black;">
+    <h3>Follow Us</h3>
+    <a href="#"><i class="fab fa-facebook"></i>facebook</a>
+    <a href="#"><i class="fab fa-twitter"></i>twitter</a>
+    <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+  </div>
+</div>
+
+
+
+<div class="footer-bottom" >
+  <p>&copy; 2025 YourCompany. All rights reserved.</p>
+</div>
+</footer>
+
+
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+<!-- footer end  -->
+
+
+
+  <!-- Bootstrap JavaScript CDN (Optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  
+footer {
+  background-color:black !important;
+  color:gray;
+  padding: 20px 0;
+  text-align: center;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+.footer-section h3 {
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 5px;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-section ul li a {
+  color: green;
+  text-decoration: none;
+}
+.footer-section .social a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: #080808;
+}
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+</style>
+
+
+
+{% endblock %}

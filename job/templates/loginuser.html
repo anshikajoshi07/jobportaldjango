@@ -1,0 +1,95 @@
+{% load static%}
+
+{%block body%}
+
+{%include 'navigation.html'%}
+
+
+<style>
+    {% comment %} body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+        margin: 0;
+    }{% endcomment %}
+    .form-container { 
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 380px;
+    }
+    .btn-back {
+        background-color: #6c757d;
+        color: white;
+    }
+    .btn-back:hover {
+        background-color: #5a6268;
+    }
+    .forgot-password {
+        text-align: right;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .forgot-password a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+    .signup-link {
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+</style>
+
+<center>
+<div class="form-container">
+    <h3 class="text-center">Sign In</h3>
+    <form method="POST" action="{% url 'loginuser'%}">
+        {% csrf_token  %}
+        <div class="mb-3">
+            <label for="email" class="form-label d-block text-start">Email Address</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label d-block text-start">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+        <button type="button" class="btn btn-back w-100 mt-2" onclick="history.back()">Back</button>
+    </form>
+    
+    <p class="signup-link">Don't have an account? <a href="{% url "user" %}">Sign Up here</a></p>
+</div>
+</center>
+
+
+{% if error == "no"%}
+<script>
+  alert("sign in Successfully");
+  window.location = (' {% url "user_home" %}')
+</script>
+{% endif %}
+{% if error == "yes"%}
+<script>
+  alert("Invalid Login Credentials , Try Again...");
+  window.location = (' {% url "user" %}')
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

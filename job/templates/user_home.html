@@ -1,0 +1,15 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'userNav.html'%}
+
+
+
+<center>
+<h1>Welcome to Online Jobportale Web-Site</h1>
+<p><h4>Hello, {{ request.user.first_name }} {{ request.user.last_name }}!</h4></p>
+<center>
+    
+
+{% endblock %}

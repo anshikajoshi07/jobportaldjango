@@ -1,0 +1,68 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'admin_nav.html'%}
+<style>
+    .form-container { 
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+    #btn-back {
+        transition :background-color 0.3s ease ,transform 0.2s ease;
+        background-color: #6c757d;
+        color: white;
+    }
+    #btn-back:hover {
+        background-color:rgb(73, 120, 156);
+        transform:scale(1.03);
+     }
+
+
+</style>
+<br/><br/>
+<br/><br/>
+
+<center>
+<div class="form-container">
+    <h3 class="text-center">Change status</h3>
+    <form method="POST" action="{% url 'Change_status' recu.id %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label d-block text-start"><b>Recruiter Name</b></label>
+            <input type="email" class="form-control" name="email" value="{{recu.user.username}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label d-block text-start"><b>Status</b></label>
+            <select class="form-control" name="status" >
+               <option value="choose option">choose option</option>
+               <option value="accept">Accept</option>
+               <option value="reject">Reject</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary ">submit</button> 
+    </form>
+</div>
+</center>
+
+
+{% if error == "no" %}
+<script>
+  alert("Status Changed Successfully");
+  window.location = ('{% url "view_recu" %}');
+</script>
+{% elif error == "yes" %}
+<script>
+  alert("Something went wrong, try again...");
+   window.location = ('{% url "nrreq" %}');
+</script>
+{% endif %}
+
+
+
+
+{% endblock %}

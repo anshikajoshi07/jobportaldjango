@@ -1,0 +1,117 @@
+{% load static %}
+
+{% block body%}
+
+{% include 'navigation.html' %}
+
+<style>
+    .form-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+    .btn-back {
+        background-color: #6c757d;
+        color: white;
+    }
+    .btn-back:hover {
+        background-color: #5a6268;
+    }
+    .forgot-password {
+        text-align: right;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .forgot-password a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+    .signup-link {
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+</style>
+
+<center>
+<div class="form-container">
+    <h3 class="text-center">Recruiter Registration</h3>
+    <form method="post" action="{% url 'recurater' %}">
+        {% csrf_token %}
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label d-block text-start">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Role -->
+        <div class="mb-3">
+            <label for="role" class="form-label d-block text-start">Your Role</label>
+            <select class="form-control" id="role" name="role" required>
+                <option value="" selected disabled>Select your role</option>
+                <option value="HR Manager">HR Manager</option>
+                <option value="Recruiter">Recruiter</option>
+                <option value="Hiring Manager">Hiring Manager</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label d-block text-start">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        
+        <!--company-->
+        <div class="mb-3">
+            <label for="company" class="form-label d-block text-start">company</label>
+            <input type="text" class="form-control" id="email" name="company" placeholder="Enter your company name" required>
+        </div>
+
+
+        <!-- Password -->
+        <div class="mb-3">
+            <label for="password" class="form-label d-block text-start">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-3">
+            <label for="Cpassword" class="form-label d-block text-start">Confirm Password</label>
+            <input type="password" class="form-control" id="Cpassword" name="Cpassword" placeholder="Confirm your password" required>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+        <button type="button" class="btn btn-back w-100 mt-2" onclick="history.back()">Back</button>
+    </form>
+
+    <!-- Signup Link -->
+    <p class="signup-link">Already registered? <a href="{% url 'loginreq' %}">Login here</a></p>
+</div>
+</center>
+
+{% if error == "no" %}
+<script>
+    alert("Sign Up Successfully");
+    window.location = "{% url 'loginreq' %}";
+</script>
+{% elif error == "yes" %}
+<script>
+    alert("Something went wrong, Try Again...");
+    window.location = "{% url 'recurater' %}";
+</script>
+{% endif %}
+
+{% endblock %}

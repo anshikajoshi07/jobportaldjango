@@ -1,0 +1,58 @@
+/* Global responsive rules for job portal */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; min-height: 100%; }
+body { font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; background: #f8f9fa; color: #212529; }
+.container-fluid, .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 15px; }
+header, nav, main, footer, section, article { display: block; }
+.navbar-brand img, .navbar-logo img { max-width: 220px; width: auto; height: auto; }
+.nav-link { white-space: normal; word-break: break-word; }
+.job-card, .candidate-card, .profile-card, .card { width: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-radius: 12px; }
+form { width: 100%; }
+input, select, textarea, button { max-width: 100%; }
+.table-responsive { width: 100%; overflow-x: auto; }
+table { min-width: 100%; width: 100%; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { min-width: 110px; }
+
+@media (max-width: 1024px) {
+    .navbar { padding: 0.6rem 1rem; }
+    .navbar .form-control { max-width: 100%; }
+    .job-card, .card { padding: 14px; }
+    .job-card h5, .card h5, .container h3 { font-size: 1.25rem; }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 0.5rem 0.75rem; }
+    .navbar .container-fluid { flex-wrap: wrap; gap: 8px; }
+    .navbar .d-flex, .navbar .navbar-brand, .navbar .form-control, .navbar .btn { width: 100% !important; }
+    .nav-link { margin: 4px 0 !important; padding: 9px 10px !important; width: 100%; text-align: left; border: none !important; }
+    .job-card { padding: 12px; }
+    .table-responsive { overflow-x: scroll; }
+    .btn { width: 100%; }
+    .mt-4, .mb-4 { margin-top: 1rem !important; margin-bottom: 1rem !important; }
+}
+
+@media (max-width: 480px) {
+    body { font-size: 14px; }
+    .navbar-brand img { max-width: 150px; }
+    .job-card h5, .card h5 { font-size: 1.1rem; }
+    .input-group, .form-control { width: 100%; }
+    a, button { font-size: 0.95rem; }
+}
+
+/* Additional responsive & project-wide UI fixes */
+video { width: 100%; height: auto; max-height: 600px; display: block; }
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.grid-container img { width: 100%; height: auto; border-radius: 8px; }
+.feature-box { width: clamp(160px, 40%, 280px); }
+.footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.footer-section { min-width: 180px; width: 100%; max-width: 280px; }
+.footer-bottom { text-align: center; }
+
+@media (max-width: 768px) {
+    .footer-container { justify-content: center; }
+    .footer-section { max-width: 100%; }
+    .features-section { padding: 30px 10px; }
+    .features-container { gap: 12px; }
+}
+

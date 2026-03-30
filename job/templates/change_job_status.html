@@ -1,0 +1,58 @@
+{% comment %} 
+{% comment %} 2. change_job_status.html
+{% load static %}
+{% block body %}
+
+{% include 'admin_nav.html' %}
+
+<center><h2 style="background-color: #deb887">Change Job Status</h2></center>
+<form method="post" action="{% url 'change_job_status'job.id %}">
+    {% csrf_token %}
+    <div class="job-card container">
+    <h5>{{ job.title }}</h5>
+    <p><strong>Job Title:</strong> {{ job.title }}</p>
+    <p><strong>Company:</strong> {{ job.company }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Job Type:</strong> {{ job.jobtype }}</p>
+    <p><strong>Salary:</strong> {{ job.salary }}</p>
+    <p><strong>Description:</strong> {{ job.job_description }}</p>
+    <div class="mb-3">
+        <label for="status">Change Status:</label>
+        <select name="status" class="form-control" required>
+            <option value="Active">Approve (Active)</option>
+            <option value="Rejected">Reject</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+{% endblock %} {% endcomment %}
+
+
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+{% include 'admin_nav.html' %}
+
+<center><h2 style="background-color: #deb887">Change Job Status</h2></center>
+<form method="post" action="{% url 'change_job_status' job.id %}">
+    {% csrf_token %}
+    <div class="job-card container">
+        <h5>{{ job.title }}</h5>
+        <p><strong>Job Title:</strong> {{ job.title }}</p>
+        <p><strong>Company:</strong> {{ job.company }}</p>
+        <p><strong>Location:</strong> {{ job.location }}</p>
+        <p><strong>Job Type:</strong> {{ job.jobtype }}</p>
+        <p><strong>Salary:</strong> {{ job.salary }}</p>
+        <p><strong>Description:</strong> {{ job.job_description }}</p>
+        <div class="mb-3">
+            <label for="status">Change Status:</label>
+            <select name="status" class="form-control" required>
+                <option value="Active">Approve (Active)</option>
+                <option value="Rejected">Reject</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,217 @@
+{% load static %}
+{% block body %}
+
+
+<center>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+        .hidden { display: none; }
+        .skip-aadhaar {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+            display: inline-block;
+            margin-top: 5px;
+        }
+    </style>
+
+<div class="form-container  shadow-lg ">
+    <h2 class="text-center mb-4">Job Application Form</h2>
+    <form action="{% url "application_form" %}" method="post" enctype="multipart/form-data" <input type="hidden" name="job_id" value="{{ job.id }}">>
+        
+        {% csrf_token %}
+        <!-- First Name & Last Name -->
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" name="first_name" required>
+            </div>
+            <div class="col">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="last_name" required>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+
+        <!-- Phone with Country Code -->
+        <div class="row mb-3">
+            <div class="col-4">
+                <label class="form-label">Country Code</label>
+                <select class="form-control" name="country_code" required>
+                    <option value="select">Select</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+971">+971 (UAE)</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="col-8">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-control" name="phone" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number" required>
+            </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" name="dob" required>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" name="address" required></textarea>
+        </div>
+
+        <!-- Country & State Dropdown -->
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Country</label>
+                <select class="form-control" name="country" required>
+                    <option value="" selected disabled>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">State</label>
+                <select class="form-control" name="state" required>
+                    <option value="" selected disabled>Select State</option>
+                    <option value="UP">Uttar Pradesh</option>
+                    <option value="MP">Madhya Pradesh</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="RJ">Rajasthan</option>
+                    <option value="DL">Delhi</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Resume Upload (Optional) -->
+        <div class="mb-3">
+            <label class="form-label">Upload Resume (Optional)</label>
+            <input type="file" class="form-control" name="resume" accept=".pdf, .doc, .docx">
+        </div>
+
+        <!-- Experience/Fresher -->
+        <div class="mb-3">
+            <label class="form-label">Experience Level</label><br>
+            <input type="radio" name="experience_level" value="Fresher" onclick="toggleExperience(false)" required> Fresher
+            <input type="radio" name="experience_level" value="Experienced" onclick="toggleExperience(true)"> Experienced
+        </div>
+
+        <!-- Experience Description (Hidden Initially) -->
+        <div class="mb-3 hidden" id="experience-description">
+            <label class="form-label">Describe Your Experience</label>
+            <textarea class="form-control" name="experience_details"></textarea>
+        </div>
+
+        <!-- Skills Dropdown -->
+        <div class="mb-3">
+            <label class="form-label">Skills</label>
+            <select class="form-control" name="skills" required>
+                <option value="" selected disabled>Select Your Skill</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Aadhaar Upload (Optional) -->
+        <div class="mb-3" id="aadhaar-section">
+            <label class="form-label">Upload Aadhaar Card (Optional)</label>
+            <input type="file" class="form-control" name="aadhaar">
+            <span class="skip-aadhaar" onclick="skipAadhaar()">Skip</span>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="mb-3">
+            <label class="form-label">Cover Letter</label>
+            <textarea class="form-control" name="cover_letter"></textarea>
+        </div>
+
+        <!-- Preferred Job Role -->
+        <div class="mb-3">
+            <label class="form-label">Preferred Job Role</label>
+            <input type="text" class="form-control" name="job_role" required>
+        </div>
+
+        <!-- Expected Salary -->
+        <div class="mb-3">
+            <label class="form-label">Expected Salary</label>
+            <input type="number" class="form-control" name="expected_salary" min="0">
+        </div>
+
+        <!-- Submit Button 
+        <button type="submit" class="btn btn-primary w-100">Submit Application</button> -->
+        <!--Submit & Back Buttons-->
+        <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+        </div>
+
+    <script>
+      function goBack() {
+        window.history.back();
+     }
+    </script>
+    </form></center>
+</div>
+
+<script>
+    function skipAadhaar() {
+        document.getElementById('aadhaar-section').classList.add('hidden');
+    }
+
+    function toggleExperience(isExperienced) {
+        const experienceDesc = document.getElementById('experience-description');
+        if (isExperienced) {
+            experienceDesc.classList.remove('hidden');
+        } else {
+            experienceDesc.classList.add('hidden');
+        }
+    }
+</script>
+
+
+{% if error == "yes" %}
+<script>
+    alert("Job posted successfully!");
+    window.location = '{% url "job_list" %}';
+</script>
+{% elif error == "no" %}
+<script>
+    alert("Something went wrong, try again...!");
+    window.location = '{% url "dashboard" %}';
+</script>
+{% endif %}
+
+{% endblock%} 

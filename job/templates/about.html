@@ -1,0 +1,143 @@
+{%load static%}
+
+{%block body%}
+
+{% include 'navigation.html'%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+
+<section class="about-hero">
+  <div class="about-inner">
+    <h1>About JobPortal</h1>
+    <p>Connecting talent with opportunity through a fast, reliable, and intelligent job platform.</p>
+  </div>
+</section>
+
+<section class="about-content">
+  <div class="cards">
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>To simplify hiring and job search by putting people first. We help candidates shine and companies hire smarter with tools and support designed for real-world success.</p>
+    </div>
+    <div class="card">
+      <h2>Our Vision</h2>
+      <p>To become India’s most trusted job marketplace, where every profile is seen and every opportunity is real. We envision strong careers and empowered teams across industries.</p>
+    </div>
+    <div class="card">
+      <h2>Our Values</h2>
+      <p>Transparency, speed, trust, and growth. We ensure verified jobs, honest communication, and matched skills so both candidates and recruiters win.</p>
+    </div>
+  </div>
+
+  <div class="why-us">
+    <h2>Why Choose JobPortal</h2>
+    <ul>
+      <li>Verified job listings from trusted companies</li>
+      <li>Skill-based matches and tailored alerts</li>
+      <li>Resume builder and interview readiness resources</li>
+      <li>24x7 support with career coaching and advice</li>
+    </ul>
+    <a class="btn btn-primary" href="{% url 'index' %}">Explore Jobs Now</a>
+  </div>
+</section>
+
+<style>
+  .about-hero {
+    background: linear-gradient(135deg, #0a527e, #0d9488);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .about-hero h1 {
+    margin: 0;
+    font-size: 2.7rem;
+    font-weight: 800;
+  }
+  .about-hero p {
+    margin: 12px auto 0;
+    max-width: 620px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+  }
+  .about-content {
+    padding: 40px 20px 60px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 35px;
+  }
+  .card {
+    background: #ffffff;
+    border: 1px solid #dbeafe;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  }
+  .card h2 {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+  }
+  .card p {
+    color: #475569;
+    line-height: 1.6;
+  }
+  .why-us {
+    text-align: center;
+    padding: 0 12px;
+  }
+  .why-us h2 {
+    color: #0f766e;
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+  }
+  .why-us ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 18px;
+    max-width: 640px;
+    color: #334155;
+    text-align: left;
+  }
+  .why-us ul li {
+    margin: 8px 0;
+    position: relative;
+    padding-left: 28px;
+  }
+  .why-us ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #10b981;
+    font-weight: 700;
+  }
+  .why-us .btn {
+    font-weight: 700;
+    padding: 10px 26px;
+    border-radius: 999px;
+    background: #0f766e;
+    border-color: #0f766e;
+  }
+  .why-us .btn:hover {
+    background: #0f172a;
+    border-color: #0f172a;
+  }
+  @media (max-width: 768px) {
+    .about-hero h1 {
+      font-size: 2.2rem;
+    }
+    .about-content {
+      padding: 28px 14px 50px;
+    }
+  }
+</style>
+
+
+
+{% endblock %}
